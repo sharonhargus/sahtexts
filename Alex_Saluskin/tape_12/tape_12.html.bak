@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Tape 12</title>
-	<link rel="stylesheet" href="../../css/main.css" />
-	<link rel="shortcut icon" href="../../imgs/speaker.png" />
-	<script src="../../js/indigenous_texts.js"></script>
-	<script src="../../js/popcorn/popcorn-complete.js"></script>
+	<link rel="stylesheet" href="//depts.washington.edu/sahtexts/css/main.css" />
+	<link rel="shortcut icon" href="//depts.washington.edu/sahtexts/imgs/speaker.png" />
+	<script src="//depts.washington.edu/sahtexts/js/indigenous_texts.js"></script>
+	<script src="//depts.washington.edu/sahtexts/js/popcorn/popcorn-complete.js"></script>
 </head>
 <body>
 <div id="main-container">

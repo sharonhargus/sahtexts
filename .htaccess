@@ -1,0 +1,4 @@
+AuthType Basic
+AuthUserFile .htpasswd
+AuthName "Login Account goes here"
+require user sah

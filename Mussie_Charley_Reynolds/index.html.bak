@@ -1,0 +1,17 @@
+<!doctype>
+<html>
+<meta charset="utf-8" />
+<head>
+<title>Mussie Charley Reynolds Texts</title>
+<link rel="stylesheet" href="//depts.washington.edu/sahtexts/css/main.css"></link>
+<script src="js/indigenous_texts.js"></script>
+<script src="js/popcorn.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Abel|Bree+Serif" rel="stylesheet">
+</head>
+<body>
+<div id="main-container">
+<h1>Mussie Charley Reynolds Texts</h1>
+<div class=menu>
+<a href='mussie/mussie.html'>A Sahaptin sermon</a>
+</div>
+</div></body></html>

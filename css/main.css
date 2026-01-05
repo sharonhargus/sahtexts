@@ -154,7 +154,7 @@ h3 {
   "http://depts.washington.edu/kwatexts/imgs/header_lg.jpg"
   */
 .headerbackground {
-  background-image: url("https://depts.washington.edu/sahtexts/imgs/sahtexts_header.jpg");
+  background-image: url("../imgs/sahtexts_header.jpg");
   width: 97.0vw;
   aspect-ratio: 16 / 3;
   background-size: cover;

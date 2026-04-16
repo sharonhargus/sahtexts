@@ -1033,3 +1033,76 @@ function init(){
 window.onload = init;
 
 
+// Intro normalization: turn #text pre blocks into paragraphs so lines wrap naturally
+(function(){
+  function normalizeIntroPre(){
+    var pres = document.querySelectorAll('#text pre');
+    pres.forEach(function(pre){
+      if(!pre || !pre.textContent) return;
+
+      // If the intro already contains structured markup like a description list, leave it intact.
+      var dl = pre.querySelector('dl');
+      if(dl){
+        var container = document.createElement('div');
+        // grab all text nodes that precede the dl
+        var buffer = '';
+        pre.childNodes.forEach(function(node){
+          if(node === dl) return;
+          if(node.compareDocumentPosition(dl) & Node.DOCUMENT_POSITION_FOLLOWING){
+            if(node.nodeType === Node.TEXT_NODE) buffer += node.textContent;
+          }
+        });
+        buffer = buffer.replace(/\r\n?/g, '\n').trim();
+        if(buffer){
+          buffer.split(/\n\s*\n/).forEach(function(pText){
+            var cleaned = pText.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ').trim();
+            if(!cleaned) return;
+            var p = document.createElement('p');
+            p.className = 'intro-paragraph';
+            p.textContent = cleaned;
+            container.appendChild(p);
+          });
+        }
+        // append dl as-is
+        var dlClone = dl.cloneNode(true);
+        container.appendChild(dlClone);
+        pre.replaceWith(container);
+        return;
+      }
+
+      var raw = pre.textContent.replace(/\r\n?/g, '\n').trim();
+      if(!raw) return;
+
+      var lines = raw.split(/\n/);
+      var container = document.createElement('div');
+
+      if(lines.length && /^length\b/i.test(lines[0].trim())){
+        var meta = document.createElement('p');
+        meta.className = 'intro-meta';
+        meta.textContent = lines[0].trim();
+        container.appendChild(meta);
+        lines = lines.slice(1);
+      }
+
+      var rest = lines.join('\n').trim();
+      if(rest){
+        rest.split(/\n\s*\n/).forEach(function(pText){
+          var cleaned = pText.replace(/\s*\n\s*/g, ' ').replace(/\s+/g, ' ').trim();
+          if(!cleaned) return;
+          var p = document.createElement('p');
+          p.className = 'intro-paragraph';
+          p.textContent = cleaned;
+          container.appendChild(p);
+        });
+      }
+
+      pre.replaceWith(container);
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', normalizeIntroPre);
+  } else {
+    normalizeIntroPre();
+  }
+})();
+
